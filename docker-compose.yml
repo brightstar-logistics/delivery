@@ -27,6 +27,7 @@ services:
     volumes:
       - ./data:/var/lib/mysql
 
+  
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
