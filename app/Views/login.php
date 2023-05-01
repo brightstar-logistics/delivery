@@ -31,7 +31,7 @@
                                     <?= $this->include('partials/alert') ?>
                                         
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Username</label>
+                                        <label class="form-label" for="username">Username11111111111111111</label>
                                         <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
                                     </div>
 
