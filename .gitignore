@@ -63,7 +63,8 @@ writable/uploads/*
 writable/debugbar/*
 
 public/NULL/*
-public/uploads/*
+public/uploads/announcements
+public/uploads/mobile_app
 
 php_errors.log
 
