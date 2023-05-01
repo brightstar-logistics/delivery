@@ -2,8 +2,6 @@
 # Operating Specific Junk Files
 #-------------------------
 
-# test
-
 # OS X
 .DS_Store
 .AppleDouble
@@ -129,4 +127,4 @@ nb-configuration.xml
 /results/
 /phpunit*.xml
 /.phpunit.*.cache
-*.sock
+
