@@ -4,6 +4,25 @@ namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
+
+// a helper function to lookup "env_FILE", "env", then fallback
+if (!function_exists('getenv_docker')) {
+	// https://github.com/docker-library/wordpress/issues/588 (WP-CLI will load this file 2x)
+	function getenv_docker($env, $default) {
+		if ($fileEnv = getenv($env . '_FILE')) {
+			return rtrim(file_get_contents($fileEnv), "\r\n");
+		}
+		else if (($val = getenv($env)) !== false) {
+			return $val;
+		}
+		else {
+			return $default;
+		}
+	}
+}
+
+define('BASE_URL', getenv_docker('CI_BASE_URL', 'http://127.0.0.1'));
+
 class App extends BaseConfig {
     /**
      * --------------------------------------------------------------------------
@@ -22,7 +41,7 @@ class App extends BaseConfig {
      *
      * @var string
      */
-    public $baseURL = 'http://delivery.ztoo.cf/';
+    public $baseURL = BASE_URL;
     // public $baseURL = 'http://127.0.0.1';
 
     /**
