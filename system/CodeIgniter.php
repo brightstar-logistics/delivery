@@ -507,6 +507,10 @@ class CodeIgniter
 			{
 				define('ENVIRONMENT', 'testing');
 			}
+			if (getenv('CI_ENVIRONMENT'))
+			{
+				define('ENVIRONMENT', getenv('CI_ENVIRONMENT'));
+			}
 			else
 			{
 				define('ENVIRONMENT', $_SERVER['CI_ENVIRONMENT'] ?? 'production');
