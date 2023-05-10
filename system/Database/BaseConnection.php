@@ -16,6 +16,9 @@ use CodeIgniter\Database\Exceptions\DatabaseException;
 use CodeIgniter\Events\Events;
 use Throwable;
 
+log_message('error', 'Context: BaseConnection');
+error_log('Context: BaseConnection');
+
 /**
  * Class BaseConnection
  */
@@ -334,6 +337,8 @@ abstract class BaseConnection implements ConnectionInterface
 		 * Depending on the database driver, conn_id can be either
 		 * boolean TRUE, a resource or an object.
 		 */
+		log_message('error', 'Context: initialize $this->connID ' . json_encode( $this->connID ));
+
 		if ($this->connID)
 		{
 			return;
@@ -611,6 +616,7 @@ abstract class BaseConnection implements ConnectionInterface
 	 */
 	public function query(string $sql, $binds = null, bool $setEscapeFlags = true, string $queryClass = '')
 	{
+		log_message('error', 'Context: query $sql ' . json_encode( $sql ));
 		$queryClass = $queryClass ?: $this->queryClass;
 
 		if (empty($this->connID))
