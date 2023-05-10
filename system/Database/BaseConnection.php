@@ -33,7 +33,7 @@ abstract class BaseConnection implements ConnectionInterface
 	 *
 	 * @var integer|string
 	 */
-	protected $port = '';
+	protected $port = null;
 
 	/**
 	 * Hostname

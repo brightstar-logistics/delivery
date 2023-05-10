@@ -4,10 +4,11 @@ namespace Config;
 
 use CodeIgniter\Database\Config;
 
+define('DB_DSN', getenv_docker('CI_DB_DSN', '')); // example mysql:dbname=example;unix_socket=/path
 define('DB_HOSTNAME', getenv_docker('CI_DB_HOSTNAME', 'localhost'));
 define('DB_USERNAME', getenv_docker('CI_DB_USERNAME', 'root'));
 define('DB_PASSWORD', getenv_docker('CI_DB_PASSWORD', ''));
-define('DB_DATABASE', getenv_docker('CI_DB_DATABASE', 'mydatabase'));
+define('DB_DATABASE', getenv_docker('CI_DB_DATABASE', 'example'));
 define('DB_PORT', getenv_docker('CI_DB_PORT', null));
 
 /**
@@ -37,7 +38,7 @@ class Database extends Config
 	 * @var array
 	 */
 	public $default = [
-		'DSN'      => '',
+		'DSN'      => DB_DSN,
 		'hostname' => DB_HOSTNAME,
 		'username' => DB_USERNAME,
 		'password' => DB_PASSWORD,
