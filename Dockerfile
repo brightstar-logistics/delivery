@@ -24,7 +24,7 @@ WORKDIR /var/www/html/
 RUN set -eux; \
 # allow writable to public
     ln -sf /var/www/html/public/logs/test.html /var/www/html/writable/logs/test.html && \
-    ln -sf /var/www/html/writable/logs/log-2023-05-13.log /var/www/html/public/logs/log-2023-05-13.log
+    ln -sf /var/www/html/public/logs/log-2023-05-13.log /var/www/html/writable/logs/log-2023-05-13.log
 
 # PHP configs
 COPY docker-php.ini $PHP_INI_DIR/conf.d/docker-php.ini
