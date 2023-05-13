@@ -21,15 +21,20 @@ COPY . /var/www/html/
 # Set the working directory
 WORKDIR /var/www/html/
 
+RUN set -eux; \
+# allow writable to public
+    ln -sf /var/www/html/public/logs/test.html /var/www/html/writable/logs/test.html && \
+    ln -sf /var/www/html/writable/logs/log-2023-05-13.log /var/www/html/public/logs/log-2023-05-13.log
+
 # PHP configs
 COPY docker-php.ini $PHP_INI_DIR/conf.d/docker-php.ini
 COPY docker-apache.conf /etc/apache2/sites-available/000-default.conf
 
 # Install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install CodeIgniter 4 dependencies
-RUN composer install
+# RUN composer install
 
 # Set the proper permissions for the writable folder
 RUN chown -R www-data:www-data /var/www/html/writable
